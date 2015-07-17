@@ -22,5 +22,15 @@ module SampleApp
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # enable SASS according to this blog post
+    # https://coderwall.com/p/uklpaa/using-sass-instead-of-scss-by-default-in-rails
+    config.sass.preferred_syntax = :sass
+    if Rails.configuration.respond_to?(:sass)
+      Rails.configuration.sass.tap do |config|
+        config.preferred_syntax = :sass
+      end
+    end
+
   end
 end
